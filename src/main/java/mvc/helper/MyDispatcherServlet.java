@@ -15,6 +15,7 @@ public class MyDispatcherServlet extends AbstractAnnotationConfigDispatcherServl
 	protected Class<?>[] getServletConfigClasses() {
 	 Class [] arr= {MyConfiguration.class};
 	 return arr;
+	 
 	}
 
 	@Override

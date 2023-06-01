@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="save" method="post">
+<form action="insert" method="post">
 Name:<input type="text" placeholder="Name" name="name">
 Email:<input type="email" placeholder="Email" name="email">
 Password::<input type="password" placeholder="Password" name="password">
@@ -15,7 +15,7 @@ Mobile Number:<input type="tel" pattern="[0-9]{10}" placeholder="Mobile" name="m
 Gender:
 <input type="radio"  name="gender" value="male">Male
 <input type="radio"  name="gender" value="female">Female <br>
-Date of Birth:<input type="date" placeholder="Date of Birth" name="dob">
+Date of Birth:<input type="date" placeholder="Date of Birth" name="date">
 <button>Save</button> <button type="reset">Cancel</button>
 </form>
 </body>
