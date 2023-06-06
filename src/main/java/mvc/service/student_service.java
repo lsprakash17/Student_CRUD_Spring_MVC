@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 import mvc.dao.Studentdao;
@@ -31,9 +32,42 @@ public class student_service
 		view.addObject("success", "Data added Succefully");
 		return view;
 	}
-	public List<Student> Fetchall() 
+	public ModelAndView Fetchall() 
 	{
-	return studentdao.fetchall();	
+		ModelAndView view =new ModelAndView();
+	
+		List<Student> s=studentdao.fetchall();
+		if(s==null)
+		{
+			view.addObject("fail", "No Data Found");
+			view.setViewName("Home.jsp");
+		}
+		else
+		{
+			view.setViewName("fetchall.jsp");
+			view.addObject("list", s);
+		}
+		return view;
+	}
+	public ModelAndView delete(int id) {
+	 
+		ModelAndView view =new ModelAndView();
+		studentdao.delete(id);
+		List<Student> s=studentdao.fetchall();
+		if(s.isEmpty())
+		{
+			view.addObject("success", "data deleted succefully");
+			view.addObject("fail", "No Data Found");
+			view.setViewName("Home.jsp");
+		}
+		else
+		{
+			
+			view.setViewName("fetchall.jsp");
+			view.addObject("list", s);
+			view.addObject("success", "data deleted succefully");
+		}
+		return view;
 	}
    
 }

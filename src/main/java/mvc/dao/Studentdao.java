@@ -27,6 +27,13 @@ public void save(Student student)
 }
 public List<Student> fetchall()
 {
-	return m.createQuery("select a from Train a").getResultList();
+	return m.createQuery("select a from Student a").getResultList();
+}
+public void delete(int id)
+{
+	t.begin();
+	m.remove(m.find(Student.class, id));
+	t.commit();
+
 }
 }

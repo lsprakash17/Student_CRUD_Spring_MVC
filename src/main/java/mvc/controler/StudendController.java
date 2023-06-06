@@ -35,10 +35,13 @@ private ModelAndView Save(@ModelAttribute Student s,@RequestParam String date)
 	return service.save(s, date);
 }
 @GetMapping("fetchall")
-private String Fectchall(Model model)
+private ModelAndView Fectchall()
 {
-	List<Student> l=service.Fetchall();
-	model.addAttribute("details", l);
-	return "fetchall.jsp";
+	return service.Fetchall();
+}
+@GetMapping("delete")
+private ModelAndView delete(@RequestParam int Id)
+{
+	return service.delete(Id);
 }
 }
