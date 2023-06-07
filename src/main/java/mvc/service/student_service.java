@@ -37,7 +37,8 @@ public class student_service
 		ModelAndView view =new ModelAndView();
 	
 		List<Student> s=studentdao.fetchall();
-		if(s==null)
+		view.addObject("deleted", "data deleted succefully");
+		if(s.isEmpty())
 		{
 			view.addObject("fail", "No Data Found");
 			view.setViewName("Home.jsp");
@@ -50,24 +51,8 @@ public class student_service
 		return view;
 	}
 	public ModelAndView delete(int id) {
-	 
-		ModelAndView view =new ModelAndView();
 		studentdao.delete(id);
-		List<Student> s=studentdao.fetchall();
-		if(s.isEmpty())
-		{
-			view.addObject("success", "data deleted succefully");
-			view.addObject("fail", "No Data Found");
-			view.setViewName("Home.jsp");
-		}
-		else
-		{
-			
-			view.setViewName("fetchall.jsp");
-			view.addObject("list", s);
-			view.addObject("success", "data deleted succefully");
-		}
-		return view;
+		return Fetchall();
 	}
    
 }
