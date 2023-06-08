@@ -11,6 +11,6 @@
 <h1 style="color:red;">${fail}</h1>
 <a href="Savedata.jsp"><button>Save</button> </a>
 <a href="fetchall"><button>Fetch All Data</button> </a>
-<a href=""><button>Fetch Databy name</button> </a>
+<a href="fetchname.jsp"><button>Fetch Databy name</button> </a>
 </body>
 </html>

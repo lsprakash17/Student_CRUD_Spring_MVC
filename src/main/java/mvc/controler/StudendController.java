@@ -44,4 +44,9 @@ private ModelAndView delete(@RequestParam int Id)
 {
 	return service.delete(Id);
 }
+@GetMapping("fetchbyname")
+private ModelAndView fetchbyname(@RequestParam String name)
+{
+ return service.FetchByName(name);	
+}
 }
