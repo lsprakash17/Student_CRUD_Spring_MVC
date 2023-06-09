@@ -1,4 +1,5 @@
 package mvc.service;
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
@@ -41,22 +42,37 @@ public class student_service {
 	}
 
 	public ModelAndView delete(int id) {
+		ModelAndView view = new ModelAndView();
 		studentdao.delete(id);
-		return Fetchall();
+		List<Student> s = studentdao.fetchall();
+		if (s.isEmpty()) {
+			view.addObject("fail", "Deleted Success No Data Found");
+			view.setViewName("Home.jsp");
+		} else {
+			view.setViewName("fetchall.jsp");
+			view.addObject("success", "deleted success");
+			view.addObject("list", s);
+		}
+		return view;
 	}
 
 	public ModelAndView FetchByName(String name) {
-	  ModelAndView view =new ModelAndView();
-	  List<Student> s=studentdao.Fetchbyname(name);
-	  if (s.isEmpty()) {
+		ModelAndView view = new ModelAndView();
+		List<Student> s = studentdao.Fetchbyname(name);
+		if (s.isEmpty()) {
 			view.addObject("fail", "No Data Found");
 			view.setViewName("fetchname.jsp");
 		} else {
 			view.setViewName("fetchall.jsp");
 			view.addObject("list", s);
 		}
-	  
 		return view;
 	}
 
+	public ModelAndView edit(int id) {
+		ModelAndView view = new ModelAndView("Edit.jsp");
+		Student student = studentdao.fetchbyid(id);
+		view.addObject("student", student);
+		return view;
+	}
 }

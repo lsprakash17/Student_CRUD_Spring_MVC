@@ -46,4 +46,8 @@ public List<Student> Fetchbyname(String name)
 {
 	return m.createQuery("select a from Student a where name=?1").setParameter(1, name).getResultList();
 }
+public Student fetchbyid(int id) {
+	return m.find(Student.class, id);
+}
+
 }

@@ -49,4 +49,9 @@ private ModelAndView fetchbyname(@RequestParam String name)
 {
  return service.FetchByName(name);	
 }
+@GetMapping("Edit")
+public ModelAndView edit(@RequestParam int num)
+{
+	return service.edit(num);
+}
 }

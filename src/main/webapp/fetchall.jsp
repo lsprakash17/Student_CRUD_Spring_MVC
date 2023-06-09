@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Fetch ALL</title>
 </head>
 <body>
 <h1 style="color:red;">${deleted}</h1>
@@ -36,7 +36,7 @@
 <th>${s.getGender()}</th>
 <th>${s.getPassword()}</th>
 <th><a href="delete?Id=${s.getId()}"><button>Delete</button></a></th>
-<th><a href="Edit.jsp?num=${s.getId()}"><button>Edit</button></a></th>
+<th><a href="Edit?num=${s.getId()}"><button>Edit</button></a></th>
 </tr>
 </c:forEach>
 <%---  previously we are using there is a way called javaserverpage tag library(jstl tag)
