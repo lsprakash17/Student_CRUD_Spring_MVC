@@ -54,4 +54,10 @@ public ModelAndView edit(@RequestParam int num)
 {
 	return service.edit(num);
 }
+@PostMapping("update")
+public ModelAndView Update(@ModelAttribute Student student,@RequestParam String date)
+{
+	return service.update(student, date);
 }
+}
+

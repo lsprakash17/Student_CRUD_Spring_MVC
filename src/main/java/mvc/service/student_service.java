@@ -22,7 +22,7 @@ public class student_service {
 		student.setAge(Period.between(LocalDate.parse(date), LocalDate.now()).getYears());
 		studentdao.save(student);
 		ModelAndView view = new ModelAndView();
-		view.setViewName("Home.jsp");
+		view.setViewName("Home");
 		view.addObject("success", "Data added Succefully");
 		return view;
 	}
@@ -33,9 +33,9 @@ public class student_service {
 		List<Student> s = studentdao.fetchall();
 		if (s.isEmpty()) {
 			view.addObject("fail", "No Data Found");
-			view.setViewName("Home.jsp");
+			view.setViewName("Home");
 		} else {
-			view.setViewName("fetchall.jsp");
+			view.setViewName("fetchall");
 			view.addObject("list", s);
 		}
 		return view;
@@ -47,9 +47,9 @@ public class student_service {
 		List<Student> s = studentdao.fetchall();
 		if (s.isEmpty()) {
 			view.addObject("fail", "Deleted Success No Data Found");
-			view.setViewName("Home.jsp");
+			view.setViewName("Home");
 		} else {
-			view.setViewName("fetchall.jsp");
+			view.setViewName("fetchall");
 			view.addObject("success", "deleted success");
 			view.addObject("list", s);
 		}
@@ -61,18 +61,29 @@ public class student_service {
 		List<Student> s = studentdao.Fetchbyname(name);
 		if (s.isEmpty()) {
 			view.addObject("fail", "No Data Found");
-			view.setViewName("fetchname.jsp");
+			view.setViewName("fetchname");
 		} else {
-			view.setViewName("fetchall.jsp");
+			view.setViewName("fetchall");
 			view.addObject("list", s);
 		}
 		return view;
 	}
 
 	public ModelAndView edit(int id) {
-		ModelAndView view = new ModelAndView("Edit.jsp");
+		ModelAndView view = new ModelAndView("Edit");
 		Student student = studentdao.fetchbyid(id);
 		view.addObject("student", student);
+		return view;
+	}
+
+	public ModelAndView update(Student student,String date) {
+		student.setDob(Date.valueOf(date));
+		student.setAge(Period.between(LocalDate.parse(date), LocalDate.now()).getYears());
+		studentdao.Update(student);
+		ModelAndView view = new ModelAndView();
+		view.setViewName("fetchall");
+		view.addObject("list",studentdao.fetchall());
+		view.addObject("success", "Data updated");
 		return view;
 	}
 }

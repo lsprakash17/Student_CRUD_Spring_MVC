@@ -49,5 +49,11 @@ public List<Student> Fetchbyname(String name)
 public Student fetchbyid(int id) {
 	return m.find(Student.class, id);
 }
-
+public void Update(Student student)
+{
+	EntityTransaction t=m.getTransaction();
+	t.begin();
+	m.merge(student);
+	t.commit();
+}
 }
